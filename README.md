@@ -22,3 +22,13 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+Just for fun, make a button that transforms like Goku
+
+Missing:
+- Aura
+- Ki fills button on click
+- Light effect on transform
+- Ki decreases if button is not pushed
+- Button shines if transformed
