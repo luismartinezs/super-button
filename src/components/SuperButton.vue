@@ -1,12 +1,14 @@
 <template>
   <button class="transformable" @click="chargeKi">
-    <span class="front" :class="transformation"></span>
+    <span class="front ss1" :class="transformation">Push me</span>
   </button>
   <div>{{ki}}, {{transformation}}</div>
 </template>
 
 <script>
 import { ref, computed } from "vue";
+
+const easyMode = true;
 
 export default {
   name: "SuperButton",
@@ -16,8 +18,8 @@ export default {
 
     const kiRequirements = {
       base: 0,
-      ss1: 10,
-      ss2: 25,
+      ss1: easyMode ? 1 : 10,
+      ss2: easyMode ? 5 : 25,
     };
 
     const transformation = computed(() => {
@@ -72,7 +74,10 @@ export default {
 }
 
 .transformable .front {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
   width: 160px;
   height: 60px;
   transition: transform 300ms;
@@ -80,14 +85,23 @@ export default {
 
 .transformable .base {
   background: hsl(200deg, 5%, 10%);
+  color: white;
 }
 
 .transformable .ss1 {
-  background: hsl(46, 100%, 52%);
+  --color: hsl(46, 100%, 52%);
+  background: var(--color);
+  color: hsl(20, 100%, 33%);
+  box-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
+    0 0 40px var(--color), 0 0 80px var(--color), 0 0 160px var(--color);
 }
 
 .transformable .ss2 {
-  background: hsl(54, 100%, 61%);
+  --color: hsl(54, 100%, 61%);
+  background: var(--color);
+  color: hsl(30, 62%, 39%);
+  box-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
+    0 0 40px var(--color), 0 0 80px var(--color), 0 0 160px var(--color);
 }
 
 .transformable:active .front {
